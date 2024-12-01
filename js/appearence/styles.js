@@ -21,7 +21,6 @@ function band_style(feature, resolution, palette,
 
 function cont_style(feature, resolution) {
   var idx = feature.get('index');
-
   return new Style({
     stroke: new Stroke({
       color: '#000000',
@@ -32,16 +31,13 @@ function cont_style(feature, resolution) {
 
 
 function cont_style_middle(feature, resolution) {
-  console.log(feature, resolution)
   var idx = feature.get('index1');
   var idz = feature.get('z1');
 
   return new Style({
     stroke: new Stroke({
-      // color: (idz == 1) ? '#000000' : '#00000000',
-      // width: (idx == 1) ? 1 : 0.5,
-      color: "#000",
-      width: 1
+      color: (idz == 1) ? '#000000' : '#00000000',
+      width: (idx == 1) ? 1.2 : 0.5
     })
   });
 }
@@ -49,11 +45,12 @@ function cont_style_middle(feature, resolution) {
 
 function cont_style_small(feature, resolution) {
   var idx = feature.get('index2');
+  var idz = feature.get('z2');
 
   return new Style({
     stroke: new Stroke({
-      color: '#000000',
-      width: (idx == 1) ? 1 : 0.5
+      color: (idz == 1) ? '#000000' : '#00000000',
+      width: (idx == 1) ? 1.1 : 0.5
     })
   });
 }
@@ -62,7 +59,6 @@ function cont_style_small(feature, resolution) {
 function cont_label_style(feature, resolution) {
   var idx = feature.get('index');
   var z = fun.round(feature.get('z'), 1);
-  var len = feature.get('Shape_Length');
  
   var fontstyle = (idx == 1) ? 'bold 14px' : '13px'
     return new Style({
@@ -83,10 +79,12 @@ function cont_label_style(feature, resolution) {
 
  function cont_label_style_middle(feature, resolution) {
   var idx = feature.get('index1');
-  var z = fun.round(feature.get('z'),1);
-  var len = feature.get('Shape_Length');
+  var z = fun.round(feature.get('z'), 1);
+  var idz = feature.get('z1');
  
-  var fontstyle = (idx == 1) ? 'bold 14px' : '13px'
+  var fontstyle = (idx == 1) ? 'bold 15px' : '13px';
+  fontstyle = (idz == 1) ? fontstyle : '0px';
+
     return new Style({
       text: new Text({
         text : z.toString(),
@@ -106,10 +104,12 @@ function cont_label_style(feature, resolution) {
 
  function cont_label_style_small(feature, resolution) {
   var idx = feature.get('index2');
-  var z = fun.round(feature.get('z'),1);
-  var len = feature.get('Shape_Length');
+  var z = fun.round(feature.get('z'), 1);
+  var idz = feature.get('z2');
  
-  var fontstyle = (idx == 1) ? 'bold 14px' : '13px'
+  var fontstyle = (idx == 1) ? 'bold 15px' : '13px';
+  fontstyle = (idz == 1) ? fontstyle : '0px';
+
     return new Style({
       text: new Text({
         text : z.toString(),

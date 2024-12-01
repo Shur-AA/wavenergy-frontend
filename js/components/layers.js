@@ -215,12 +215,12 @@ var hs_lyr_group2 = new Group({
       source: vector_source(host, 'wavenergy:azov_10_hsig_plg', epsg)
     }),
     new VectorLayer({
-      style: styles.cont_style,
+      style: styles.cont_style_middle,
       source: vector_source(host, 'wavenergy:azov_10_hsig_iso', epsg)
     }),
     new VectorLayer({
       declutter: true,
-      style: styles.cont_label_style,
+      style: styles.cont_label_style_middle,
       source: vector_source(host, 'wavenergy:azov_10_hsig_iso', epsg)
     }),
       new VectorLayer({
@@ -235,12 +235,12 @@ var hs_lyr_group2 = new Group({
       source: vector_source(host, 'wavenergy:maxs_02_50_plg_ws', epsg)
     }),
     new VectorLayer({
-      style: styles.cont_style,
+      style: styles.cont_style_middle,
       source: vector_source(host, 'wavenergy:maxs_02_50_iso_ws', epsg)
     }),
     new VectorLayer({
       declutter: true,
-      style: styles.cont_label_style,
+      style: styles.cont_label_style_middle,
       source: vector_source(host, 'wavenergy:maxs_02_50_iso_ws', epsg)
     })
   ]
@@ -289,12 +289,12 @@ var hs_lyr_group3 = new Group({
       source: vector_source(host, 'wavenergy:azov_10_hsig_plg', epsg)
     }),
     new VectorLayer({
-      style: styles.cont_style,
+      style: styles.cont_style_small,
       source: vector_source(host, 'wavenergy:azov_10_hsig_iso', epsg)
     }),
     new VectorLayer({
       declutter: true,
-      style: styles.cont_label_style,
+      style: styles.cont_label_style_small,
       source: vector_source(host, 'wavenergy:azov_10_hsig_iso', epsg)
     }),
       new VectorLayer({
@@ -309,18 +309,19 @@ var hs_lyr_group3 = new Group({
       source: vector_source(host, 'wavenergy:maxs_02_50_plg_ws', epsg)
     }),
     new VectorLayer({
-      style: styles.cont_style,
+      style: styles.cont_style_small,
       source: vector_source(host, 'wavenergy:maxs_02_50_iso_ws', epsg)
     }),
     new VectorLayer({
       declutter: true,
-      style: styles.cont_label_style,
+      style: styles.cont_label_style_small,
       source: vector_source(host, 'wavenergy:maxs_02_50_iso_ws', epsg)
     })
   ]
 })
 
-
+/*Значительная высота волны
+        Large scale*/
 
 var h3p_lyr_group = new Group({
   combine: true,
