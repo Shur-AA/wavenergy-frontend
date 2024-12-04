@@ -131,17 +131,25 @@ map.on('moveend', function (e) {
   switch (MapRequestId) {
     case 'hs':
       if (map.getView().getZoom() <= 4) {
-        insert_legend(colorbrewer.RdPu, 0, 18, 3);
+        insert_legend(colorbrewer.RdPu, 0, 20, 4);
         break;
       }
-      if (map.getView().getZoom() > 6) {
+      if (map.getView().getZoom() > 7) {
         insert_legend(colorbrewer.RdPu, 0, 18, 1);
         break;
       }
-      insert_legend(colorbrewer.RdPu, 0, 18, 2);
+      insert_legend(colorbrewer.RdPu, 0, 20, 2);
       break;
     case 'h3p':
-      insert_legend(colorbrewer.PuRd, 0, 26, 2);
+      if (map.getView().getZoom() <= 4) {
+        insert_legend(colorbrewer.PuRd, 0, 32, 8);
+        break;
+      }
+      if (map.getView().getZoom() > 7) {
+        insert_legend(colorbrewer.PuRd, 0, 26, 2);
+        break;
+      }
+      insert_legend(colorbrewer.PuRd, 0, 28, 4);
       break;
     case 'hsr':
       insert_legend(colorbrewer.OrRd, 0, 3.2, 0.2);
@@ -518,13 +526,13 @@ function ready() {
         cur_var_zoom1 = layers.hs_lyr_group1;
         cur_var_zoom2 = layers.hs_lyr_group2;
         cur_var_zoom3 = layers.hs_lyr_group3;
-        insert_legend(colorbrewer.RdPu, 0, 18, 3);
+        insert_legend(colorbrewer.RdPu, 0, 20, 4);
         break;
       case 'h3p':
         cur_var_zoom1 = layers.h3p_lyr_group1;
-        cur_var_zoom2 = layers.h3p_lyr_group1;
-        cur_var_zoom3 = layers.h3p_lyr_group1;
-        insert_legend(colorbrewer.PuRd, 0, 26, 2);
+        cur_var_zoom2 = layers.h3p_lyr_group2;
+        cur_var_zoom3 = layers.h3p_lyr_group3;
+        insert_legend(colorbrewer.PuRd, 0, 32, 8);
         break;
       case 'hsr':
         cur_var = layers.hsr_lyr_group;
@@ -591,7 +599,7 @@ function ready() {
   });
 
   tools.tablesInit(1, [1], "legendplace");
-  insert_legend(colorbrewer.RdPu, 0, 18, 3);
+  insert_legend(colorbrewer.RdPu, 0, 20, 4);
 
   const closeBut = document.getElementsByClassName('fa-window-minimize');
   closeBut[0].addEventListener('click', function (event) {

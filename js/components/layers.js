@@ -103,7 +103,7 @@ var coast_lyr = new VectorLayer({
 var hs_lyr_group1 = new Group({
   combine: true,
   visible: true,
-  minZoom: 6,
+  minZoom: 7,
   title: 'Значительная высота волны',
   name: 'hs',
   layers: [
@@ -178,7 +178,7 @@ var hs_lyr_group1 = new Group({
 var hs_lyr_group2 = new Group({
   combine: true,
   visible: true,
-  maxZoom: 6,
+  maxZoom: 7,
   minZoom: 4,
   title: 'Значительная высота волны',
   name: 'hs',
@@ -188,7 +188,7 @@ var hs_lyr_group2 = new Group({
       var z = feature.get('z_mean');
       return new Style({
           fill: new Fill({
-            color: fun.get_color(colorbrewer.RdPu, z, 0, 18, 2)
+            color: fun.get_color(colorbrewer.RdPu, z, 0, 20, 2)
           })
         })
       },
@@ -208,7 +208,7 @@ var hs_lyr_group2 = new Group({
       var z = feature.get('z_mean');
       return new Style({
           fill: new Fill({
-            color: fun.get_color(colorbrewer.RdPu, z, 0, 18, 2)
+            color: fun.get_color(colorbrewer.RdPu, z, 0, 20, 2)
           })
         })
       },
@@ -228,7 +228,7 @@ var hs_lyr_group2 = new Group({
       var z = feature.get('z_mean');
       return new Style({
           fill: new Fill({
-            color: fun.get_color(colorbrewer.RdPu, z, 0, 18, 2)
+            color: fun.get_color(colorbrewer.RdPu, z, 0, 20, 2)
           })
         })
       },
@@ -262,7 +262,7 @@ var hs_lyr_group3 = new Group({
       var z = feature.get('z_mean');
       return new Style({
           fill: new Fill({
-            color: fun.get_color(colorbrewer.RdPu, z, 0, 18, 3)
+            color: fun.get_color(colorbrewer.RdPu, z, 0, 20, 4)
           })
         })
       },
@@ -282,7 +282,7 @@ var hs_lyr_group3 = new Group({
       var z = feature.get('z_mean');
       return new Style({
           fill: new Fill({
-            color: fun.get_color(colorbrewer.RdPu, z, 0, 18, 3)
+            color: fun.get_color(colorbrewer.RdPu, z, 0, 20, 4)
           })
         })
       },
@@ -302,7 +302,7 @@ var hs_lyr_group3 = new Group({
       var z = feature.get('z_mean');
       return new Style({
           fill: new Fill({
-            color: fun.get_color(colorbrewer.RdPu, z, 0, 18, 3)
+            color: fun.get_color(colorbrewer.RdPu, z, 0, 20, 4)
           })
         })
       },
@@ -320,14 +320,15 @@ var hs_lyr_group3 = new Group({
   ]
 })
 
-/*Значительная высота волны
+/*Максимальная высота волны
         Large scale*/
 
-var h3p_lyr_group = new Group({
+var h3p_lyr_group1 = new Group({
   combine: true,
   visible: true,
   title: 'Значительная высота волны',
   name: 'h3p',
+  minZoom: 7,
   layers: [
     new VectorLayer({
       style: function(feature, resolution) {
@@ -367,6 +368,116 @@ var h3p_lyr_group = new Group({
     new VectorLayer({
       declutter: true,
       style: styles.cont_label_style,
+      source: vector_source(host, 'wavenergy:dv_h1p_ln', epsg)
+    })
+  ]
+});
+
+
+/*Максимальная высота волны
+        Middle scale*/
+
+var h3p_lyr_group2 = new Group({
+  combine: true,
+  visible: true,
+  title: 'Значительная высота волны',
+  name: 'h3p',
+  maxZoom: 7,
+  minZoom: 4,
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.PuRd, z, 0, 28, 4)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:h3p_band', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_middle,
+      source: vector_source(host, 'wavenergy:h3p_cont', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_middle,
+      source: vector_source(host, 'wavenergy:h3p_cont', epsg)
+    }),
+      new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.PuRd, z, 0, 28, 4)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:dv_h1p_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_middle,
+      source: vector_source(host, 'wavenergy:dv_h1p_ln', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_middle,
+      source: vector_source(host, 'wavenergy:dv_h1p_ln', epsg)
+    })
+  ]
+});
+
+
+
+/*Максимальная высота волны
+        Samll scale*/
+
+var h3p_lyr_group3 = new Group({
+  combine: true,
+  visible: true,
+  title: 'Значительная высота волны',
+  name: 'h3p',
+  maxZoom: 4,
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.PuRd, z, 0, 32, 8)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:h3p_band', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_small,
+      source: vector_source(host, 'wavenergy:h3p_cont', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_small,
+      source: vector_source(host, 'wavenergy:h3p_cont', epsg)
+    }),
+      new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.PuRd, z, 0, 32, 8)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:dv_h1p_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_small,
+      source: vector_source(host, 'wavenergy:dv_h1p_ln', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_small,
       source: vector_source(host, 'wavenergy:dv_h1p_ln', epsg)
     })
   ]
@@ -1020,7 +1131,9 @@ module.exports = {
   hs_lyr_group3,
   hs_lyr_group2,
   hs_lyr_group1,
-  h3p_lyr_group,
+  h3p_lyr_group1,
+  h3p_lyr_group2,
+  h3p_lyr_group3,
   hsr_lyr_group,
   lsr_lyr_group,
   psr_lyr_group,
