@@ -431,7 +431,7 @@ var h3p_lyr_group2 = new Group({
 
 
 /*Максимальная высота волны
-        Samll scale*/
+        Small scale*/
 
 var h3p_lyr_group3 = new Group({
   combine: true,
@@ -483,6 +483,10 @@ var h3p_lyr_group3 = new Group({
   ]
 });
 
+
+/*Средняя высота значительных волн
+        Large scale*/
+
 // color crutch
 var hsr_colors = fun.get_colors(colorbrewer.OrRd, 0, 3.2, 0.2);
 var bin_number = function(z, min, step){
@@ -490,7 +494,7 @@ var bin_number = function(z, min, step){
   return bin_num
 }
 
-var hsr_lyr_group = new Group({
+var hsr_lyr_group1 = new Group({
   combine: true,
   visible: true,
   name: 'hsr',
@@ -581,6 +585,210 @@ var hsr_lyr_group = new Group({
   ]
 });
 
+
+/*Средняя высота значительных волн
+        Middle scale*/
+
+// color crutch
+var hsr_colors = fun.get_colors(colorbrewer.OrRd, 0, 3.2, 0.2);
+var bin_number = function(z, min, step){
+  var bin_num = Math.floor((z - min)/step);
+  return bin_num
+}
+
+var hsr_lyr_group2 = new Group({
+  combine: true,
+  visible: true,
+  name: 'hsr',
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            // color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.2)
+            color: hsr_colors[bin_number(z, 0, 0.2)]
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:hsr_band', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style,
+      source: vector_source(host, 'wavenergy:hsr_cont', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style,
+      source: vector_source(host, 'wavenergy:hsr_cont', epsg)
+    }),
+    new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            // color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.2)
+            color: hsr_colors[bin_number(z, 0, 0.2)]
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:azov_10_hsr_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style,
+      source: vector_source(host, 'wavenergy:azov_10_hsr_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style,
+      source: vector_source(host, 'wavenergy:azov_10_hsr_iso', epsg)
+    }),
+    new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            color: hsr_colors[bin_number(z, 0, 0.2)]
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:hsr_plg_dv', epsg)
+    })
+    ,
+    new VectorLayer({
+      style: styles.cont_style,
+      source: vector_source(host, 'wavenergy:hsr_iso_dv', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style,
+      source: vector_source(host, 'wavenergy:hsr_iso_dv', epsg)
+    }),
+    new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            color: hsr_colors[bin_number(z, 0, 0.2)]
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:hsr_02_50_plg_ws', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style,
+      source: vector_source(host, 'wavenergy:hsr_02_50_iso_ws', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style,
+      source: vector_source(host, 'wavenergy:hsr_02_50_iso_ws', epsg)
+    }),
+  ]
+});
+
+
+
+/*Средняя высота значительных волн
+        Samll scale*/
+
+// color crutch
+var hsr_colors = fun.get_colors(colorbrewer.OrRd, 0, 3.2, 0.2);
+var bin_number = function(z, min, step){
+  var bin_num = Math.floor((z - min)/step);
+  return bin_num
+}
+
+var hsr_lyr_group3 = new Group({
+  combine: true,
+  visible: true,
+  name: 'hsr',
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            // color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.2)
+            color: hsr_colors[bin_number(z, 0, 0.2)]
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:hsr_band', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style,
+      source: vector_source(host, 'wavenergy:hsr_cont', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style,
+      source: vector_source(host, 'wavenergy:hsr_cont', epsg)
+    }),
+    new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            // color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.2)
+            color: hsr_colors[bin_number(z, 0, 0.2)]
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:azov_10_hsr_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style,
+      source: vector_source(host, 'wavenergy:azov_10_hsr_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style,
+      source: vector_source(host, 'wavenergy:azov_10_hsr_iso', epsg)
+    }),
+    new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            color: hsr_colors[bin_number(z, 0, 0.2)]
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:hsr_plg_dv', epsg)
+    })
+    ,
+    new VectorLayer({
+      style: styles.cont_style,
+      source: vector_source(host, 'wavenergy:hsr_iso_dv', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style,
+      source: vector_source(host, 'wavenergy:hsr_iso_dv', epsg)
+    }),
+    new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            color: hsr_colors[bin_number(z, 0, 0.2)]
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:hsr_02_50_plg_ws', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style,
+      source: vector_source(host, 'wavenergy:hsr_02_50_iso_ws', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style,
+      source: vector_source(host, 'wavenergy:hsr_02_50_iso_ws', epsg)
+    }),
+  ]
+});
 
 
 var lsr_lyr_group = new Group({
@@ -1134,7 +1342,9 @@ module.exports = {
   h3p_lyr_group1,
   h3p_lyr_group2,
   h3p_lyr_group3,
-  hsr_lyr_group,
+  hsr_lyr_group1,
+  hsr_lyr_group2,
+  hsr_lyr_group3,
   lsr_lyr_group,
   psr_lyr_group,
   esr_lyr_group,
