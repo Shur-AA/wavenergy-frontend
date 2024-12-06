@@ -493,19 +493,21 @@ var bin_number = function(z, min, step){
   var bin_num = Math.floor((z - min)/step);
   return bin_num
 }
+            
 
 var hsr_lyr_group1 = new Group({
   combine: true,
   visible: true,
   name: 'hsr',
+  minZoom: 7,
   layers: [
     new VectorLayer({
       style: function(feature, resolution) {
        var z = feature.get('z_mean');
        return new Style({
           fill: new Fill({
-            // color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.2)
-            color: hsr_colors[bin_number(z, 0, 0.2)]
+            color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.2)
+            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
@@ -525,8 +527,8 @@ var hsr_lyr_group1 = new Group({
        var z = feature.get('z_mean');
        return new Style({
           fill: new Fill({
-            // color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.2)
-            color: hsr_colors[bin_number(z, 0, 0.2)]
+            color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.2)
+            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
@@ -546,7 +548,8 @@ var hsr_lyr_group1 = new Group({
        var z = feature.get('z_mean');
        return new Style({
           fill: new Fill({
-            color: hsr_colors[bin_number(z, 0, 0.2)]
+            color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.2)
+            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
@@ -567,7 +570,8 @@ var hsr_lyr_group1 = new Group({
        var z = feature.get('z_mean');
        return new Style({
           fill: new Fill({
-            color: hsr_colors[bin_number(z, 0, 0.2)]
+            color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.2)
+            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
@@ -590,7 +594,7 @@ var hsr_lyr_group1 = new Group({
         Middle scale*/
 
 // color crutch
-var hsr_colors = fun.get_colors(colorbrewer.OrRd, 0, 3.2, 0.2);
+var hsr_colors = fun.get_colors(colorbrewer.OrRd, 0, 3.2, 0.4);
 var bin_number = function(z, min, step){
   var bin_num = Math.floor((z - min)/step);
   return bin_num
@@ -600,26 +604,28 @@ var hsr_lyr_group2 = new Group({
   combine: true,
   visible: true,
   name: 'hsr',
+  maxZoom: 7,
+  minZoom: 4,
   layers: [
     new VectorLayer({
       style: function(feature, resolution) {
        var z = feature.get('z_mean');
        return new Style({
           fill: new Fill({
-            // color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.2)
-            color: hsr_colors[bin_number(z, 0, 0.2)]
+            color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.4)
+            // color: hsr_colors[bin_number(z, 0, 0.4)]
           })
         })
       },
       source: vector_source(host, 'wavenergy:hsr_band', epsg)
     }),
     new VectorLayer({
-      style: styles.cont_style,
+      style: styles.cont_style_middle,
       source: vector_source(host, 'wavenergy:hsr_cont', epsg)
     }),
     new VectorLayer({
       declutter: true,
-      style: styles.cont_label_style,
+      style: styles.cont_label_style_middle,
       source: vector_source(host, 'wavenergy:hsr_cont', epsg)
     }),
     new VectorLayer({
@@ -627,20 +633,20 @@ var hsr_lyr_group2 = new Group({
        var z = feature.get('z_mean');
        return new Style({
           fill: new Fill({
-            // color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.2)
-            color: hsr_colors[bin_number(z, 0, 0.2)]
+            color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.4)
+            // color: hsr_colors[bin_number(z, 0, 0.4)]
           })
         })
       },
       source: vector_source(host, 'wavenergy:azov_10_hsr_plg', epsg)
     }),
     new VectorLayer({
-      style: styles.cont_style,
+      style: styles.cont_style_middle,
       source: vector_source(host, 'wavenergy:azov_10_hsr_iso', epsg)
     }),
     new VectorLayer({
       declutter: true,
-      style: styles.cont_label_style,
+      style: styles.cont_label_style_middle,
       source: vector_source(host, 'wavenergy:azov_10_hsr_iso', epsg)
     }),
     new VectorLayer({
@@ -648,7 +654,8 @@ var hsr_lyr_group2 = new Group({
        var z = feature.get('z_mean');
        return new Style({
           fill: new Fill({
-            color: hsr_colors[bin_number(z, 0, 0.2)]
+            color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.4)
+            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
@@ -656,12 +663,12 @@ var hsr_lyr_group2 = new Group({
     })
     ,
     new VectorLayer({
-      style: styles.cont_style,
+      style: styles.cont_style_middle,
       source: vector_source(host, 'wavenergy:hsr_iso_dv', epsg)
     }),
     new VectorLayer({
       declutter: true,
-      style: styles.cont_label_style,
+      style: styles.cont_label_style_middle,
       source: vector_source(host, 'wavenergy:hsr_iso_dv', epsg)
     }),
     new VectorLayer({
@@ -669,19 +676,20 @@ var hsr_lyr_group2 = new Group({
        var z = feature.get('z_mean');
        return new Style({
           fill: new Fill({
-            color: hsr_colors[bin_number(z, 0, 0.2)]
+            color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.4)
+            // color: hsr_colors[bin_number(z, 0, 0.4)]
           })
         })
       },
       source: vector_source(host, 'wavenergy:hsr_02_50_plg_ws', epsg)
     }),
     new VectorLayer({
-      style: styles.cont_style,
+      style: styles.cont_style_middle,
       source: vector_source(host, 'wavenergy:hsr_02_50_iso_ws', epsg)
     }),
     new VectorLayer({
       declutter: true,
-      style: styles.cont_label_style,
+      style: styles.cont_label_style_middle,
       source: vector_source(host, 'wavenergy:hsr_02_50_iso_ws', epsg)
     }),
   ]
@@ -690,10 +698,10 @@ var hsr_lyr_group2 = new Group({
 
 
 /*Средняя высота значительных волн
-        Samll scale*/
+        Small scale*/
 
 // color crutch
-var hsr_colors = fun.get_colors(colorbrewer.OrRd, 0, 3.2, 0.2);
+var hsr_colors = fun.get_colors(colorbrewer.OrRd, 0, 3.2, 0.8);
 var bin_number = function(z, min, step){
   var bin_num = Math.floor((z - min)/step);
   return bin_num
@@ -702,6 +710,7 @@ var bin_number = function(z, min, step){
 var hsr_lyr_group3 = new Group({
   combine: true,
   visible: true,
+  maxZoom: 4,
   name: 'hsr',
   layers: [
     new VectorLayer({
@@ -709,20 +718,20 @@ var hsr_lyr_group3 = new Group({
        var z = feature.get('z_mean');
        return new Style({
           fill: new Fill({
-            // color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.2)
-            color: hsr_colors[bin_number(z, 0, 0.2)]
+            color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.8)
+            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
       source: vector_source(host, 'wavenergy:hsr_band', epsg)
     }),
     new VectorLayer({
-      style: styles.cont_style,
+      style: styles.cont_style_small,
       source: vector_source(host, 'wavenergy:hsr_cont', epsg)
     }),
     new VectorLayer({
       declutter: true,
-      style: styles.cont_label_style,
+      style: styles.cont_label_style_small,
       source: vector_source(host, 'wavenergy:hsr_cont', epsg)
     }),
     new VectorLayer({
@@ -730,20 +739,20 @@ var hsr_lyr_group3 = new Group({
        var z = feature.get('z_mean');
        return new Style({
           fill: new Fill({
-            // color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.2)
-            color: hsr_colors[bin_number(z, 0, 0.2)]
+            color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.8)
+            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
       source: vector_source(host, 'wavenergy:azov_10_hsr_plg', epsg)
     }),
     new VectorLayer({
-      style: styles.cont_style,
+      style: styles.cont_style_small,
       source: vector_source(host, 'wavenergy:azov_10_hsr_iso', epsg)
     }),
     new VectorLayer({
       declutter: true,
-      style: styles.cont_label_style,
+      style: styles.cont_label_style_small,
       source: vector_source(host, 'wavenergy:azov_10_hsr_iso', epsg)
     }),
     new VectorLayer({
@@ -751,7 +760,8 @@ var hsr_lyr_group3 = new Group({
        var z = feature.get('z_mean');
        return new Style({
           fill: new Fill({
-            color: hsr_colors[bin_number(z, 0, 0.2)]
+            color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.8)
+            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
@@ -759,12 +769,12 @@ var hsr_lyr_group3 = new Group({
     })
     ,
     new VectorLayer({
-      style: styles.cont_style,
+      style: styles.cont_style_small,
       source: vector_source(host, 'wavenergy:hsr_iso_dv', epsg)
     }),
     new VectorLayer({
       declutter: true,
-      style: styles.cont_label_style,
+      style: styles.cont_label_style_small,
       source: vector_source(host, 'wavenergy:hsr_iso_dv', epsg)
     }),
     new VectorLayer({
@@ -772,19 +782,20 @@ var hsr_lyr_group3 = new Group({
        var z = feature.get('z_mean');
        return new Style({
           fill: new Fill({
-            color: hsr_colors[bin_number(z, 0, 0.2)]
+            color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.8)
+            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
       source: vector_source(host, 'wavenergy:hsr_02_50_plg_ws', epsg)
     }),
     new VectorLayer({
-      style: styles.cont_style,
+      style: styles.cont_style_small,
       source: vector_source(host, 'wavenergy:hsr_02_50_iso_ws', epsg)
     }),
     new VectorLayer({
       declutter: true,
-      style: styles.cont_label_style,
+      style: styles.cont_label_style_small,
       source: vector_source(host, 'wavenergy:hsr_02_50_iso_ws', epsg)
     }),
   ]
