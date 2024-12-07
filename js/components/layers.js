@@ -487,14 +487,6 @@ var h3p_lyr_group3 = new Group({
 /*Средняя высота значительных волн
         Large scale*/
 
-// color crutch
-var hsr_colors = fun.get_colors(colorbrewer.OrRd, 0, 3.2, 0.2);
-var bin_number = function(z, min, step){
-  var bin_num = Math.floor((z - min)/step);
-  return bin_num
-}
-            
-
 var hsr_lyr_group1 = new Group({
   combine: true,
   visible: true,
@@ -507,7 +499,6 @@ var hsr_lyr_group1 = new Group({
        return new Style({
           fill: new Fill({
             color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.2)
-            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
@@ -528,7 +519,6 @@ var hsr_lyr_group1 = new Group({
        return new Style({
           fill: new Fill({
             color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.2)
-            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
@@ -549,7 +539,6 @@ var hsr_lyr_group1 = new Group({
        return new Style({
           fill: new Fill({
             color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.2)
-            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
@@ -571,7 +560,6 @@ var hsr_lyr_group1 = new Group({
        return new Style({
           fill: new Fill({
             color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.2)
-            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
@@ -593,13 +581,6 @@ var hsr_lyr_group1 = new Group({
 /*Средняя высота значительных волн
         Middle scale*/
 
-// color crutch
-var hsr_colors = fun.get_colors(colorbrewer.OrRd, 0, 3.2, 0.4);
-var bin_number = function(z, min, step){
-  var bin_num = Math.floor((z - min)/step);
-  return bin_num
-}
-
 var hsr_lyr_group2 = new Group({
   combine: true,
   visible: true,
@@ -613,7 +594,6 @@ var hsr_lyr_group2 = new Group({
        return new Style({
           fill: new Fill({
             color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.4)
-            // color: hsr_colors[bin_number(z, 0, 0.4)]
           })
         })
       },
@@ -634,7 +614,6 @@ var hsr_lyr_group2 = new Group({
        return new Style({
           fill: new Fill({
             color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.4)
-            // color: hsr_colors[bin_number(z, 0, 0.4)]
           })
         })
       },
@@ -655,7 +634,6 @@ var hsr_lyr_group2 = new Group({
        return new Style({
           fill: new Fill({
             color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.4)
-            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
@@ -677,7 +655,6 @@ var hsr_lyr_group2 = new Group({
        return new Style({
           fill: new Fill({
             color: fun.get_color(colorbrewer.OrRd, z, 0, 3.2, 0.4)
-            // color: hsr_colors[bin_number(z, 0, 0.4)]
           })
         })
       },
@@ -700,12 +677,6 @@ var hsr_lyr_group2 = new Group({
 /*Средняя высота значительных волн
         Small scale*/
 
-// color crutch
-var hsr_colors = fun.get_colors(colorbrewer.OrRd, 0, 3.2, 0.8);
-var bin_number = function(z, min, step){
-  var bin_num = Math.floor((z - min)/step);
-  return bin_num
-}
 
 var hsr_lyr_group3 = new Group({
   combine: true,
@@ -719,7 +690,6 @@ var hsr_lyr_group3 = new Group({
        return new Style({
           fill: new Fill({
             color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.8)
-            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
@@ -740,7 +710,6 @@ var hsr_lyr_group3 = new Group({
        return new Style({
           fill: new Fill({
             color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.8)
-            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
@@ -761,7 +730,6 @@ var hsr_lyr_group3 = new Group({
        return new Style({
           fill: new Fill({
             color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.8)
-            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
@@ -783,7 +751,6 @@ var hsr_lyr_group3 = new Group({
        return new Style({
           fill: new Fill({
             color: fun.get_color(colorbrewer.OrRd, z, 0, 2.6, 0.8)
-            // color: hsr_colors[bin_number(z, 0, 0.2)]
           })
         })
       },
@@ -798,6 +765,169 @@ var hsr_lyr_group3 = new Group({
       style: styles.cont_label_style_small,
       source: vector_source(host, 'wavenergy:hsr_02_50_iso_ws', epsg)
     }),
+  ]
+});
+
+
+
+/*Максимальный поток энергии волны
+        Large scale*/
+
+var emax_lyr_group1 = new Group({
+  combine: true,
+  visible: true,
+  minZoom: 7,
+  name: 'emax',
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlOrBr, z, 0, 4000, 250)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:azov_10_emax_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style,
+      source: vector_source(host, 'wavenergy:azov_10_emax_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style,
+      source: vector_source(host, 'wavenergy:azov_10_emax_iso', epsg)
+    }),
+    new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlOrBr, z, 0, 4000, 250)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:emax_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style,
+      source: vector_source(host, 'wavenergy:emax_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style,
+      source: vector_source(host, 'wavenergy:emax_iso', epsg)
+    })
+  ]
+});
+
+
+
+/*Максимальный поток энергии волны
+        Middle scale*/
+
+var emax_lyr_group2 = new Group({
+  combine: true,
+  visible: true,
+  maxZoom: 7,
+  minZoom: 4,
+  name: 'emax',
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlOrBr, z, 0, 4000, 500)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:azov_10_emax_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_middle,
+      source: vector_source(host, 'wavenergy:azov_10_emax_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_middle,
+      source: vector_source(host, 'wavenergy:azov_10_emax_iso', epsg)
+    }),
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlOrBr, z, 0, 4000, 500)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:emax_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_middle,
+      source: vector_source(host, 'wavenergy:emax_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_middle,
+      source: vector_source(host, 'wavenergy:emax_iso', epsg)
+    })
+  ]
+});
+
+
+
+/*Максимальный поток энергии волны
+        Small scale*/
+
+var emax_lyr_group3 = new Group({
+  combine: true,
+  visible: true,
+  maxZoom: 4,
+  name: 'emax',
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlOrBr, z, 0, 4000, 1000)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:azov_10_emax_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_small,
+      source: vector_source(host, 'wavenergy:azov_10_emax_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_small,
+      source: vector_source(host, 'wavenergy:azov_10_emax_iso', epsg)
+    }),
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlOrBr, z, 0, 4000, 1000)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:emax_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_small,
+      source: vector_source(host, 'wavenergy:emax_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_small,
+      source: vector_source(host, 'wavenergy:emax_iso', epsg)
+    })
   ]
 });
 
@@ -985,57 +1115,6 @@ var esr_lyr_group = new Group({
       declutter: true,
       style: styles.cont_label_style,
       source: vector_source(host, 'wavenergy:esr_cont', epsg)
-    })
-  ]
-});
-
-
-
-
-var emax_lyr_group = new Group({
-  combine: true,
-  visible: true,
-  name: 'emax',
-  layers: [
-    new VectorLayer({
-      style: function(feature, resolution) {
-       var z = feature.get('z_mean');
-       return new Style({
-          fill: new Fill({
-            color: fun.get_color(colorbrewer.YlOrBr, z, 0, 4000, 250)
-          })
-        })
-      },
-      source: vector_source(host, 'wavenergy:azov_10_emax_plg', epsg)
-    }),
-    new VectorLayer({
-      style: styles.cont_style,
-      source: vector_source(host, 'wavenergy:azov_10_emax_iso', epsg)
-    }),
-    new VectorLayer({
-      declutter: true,
-      style: styles.cont_label_style,
-      source: vector_source(host, 'wavenergy:azov_10_emax_iso', epsg)
-    }),
-    new VectorLayer({
-      style: function(feature, resolution) {
-       var z = feature.get('z_mean');
-       return new Style({
-          fill: new Fill({
-            color: fun.get_color(colorbrewer.YlOrBr, z, 0, 4000, 250)
-          })
-        })
-      },
-      source: vector_source(host, 'wavenergy:emax_plg', epsg)
-    }),
-    new VectorLayer({
-      style: styles.cont_style,
-      source: vector_source(host, 'wavenergy:emax_iso', epsg)
-    }),
-    new VectorLayer({
-      declutter: true,
-      style: styles.cont_label_style,
-      source: vector_source(host, 'wavenergy:emax_iso', epsg)
     })
   ]
 });
@@ -1359,7 +1438,9 @@ module.exports = {
   lsr_lyr_group,
   psr_lyr_group,
   esr_lyr_group,
-  emax_lyr_group,
+  emax_lyr_group1,
+  emax_lyr_group2,
+  emax_lyr_group3,
   osr_lyr_group,
   wind_grp_50_lyr_group,
   wind_grp_100_lyr_group,
