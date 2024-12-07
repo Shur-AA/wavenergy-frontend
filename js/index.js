@@ -169,7 +169,15 @@ map.on('moveend', function (e) {
       insert_legend(colorbrewer.Greens, 0, 6, 0.5);
       break;
     case 'esr':
-      insert_legend(colorbrewer.YlGnBu, 0, 65, 5);
+      if (map.getView().getZoom() <= 4) {
+        insert_legend(colorbrewer.YlGnBu, 0, 80, 20);
+        break;
+      }
+      if (map.getView().getZoom() > 7) {
+        insert_legend(colorbrewer.YlGnBu, 0, 65, 5);
+        break;
+      }
+      insert_legend(colorbrewer.YlGnBu, 0, 70, 10);
       break;
     case 'emax':
       if (map.getView().getZoom() <= 4) {
@@ -565,8 +573,10 @@ function ready() {
         insert_legend(colorbrewer.Greens, 0, 6, 0.5);
         break;
       case 'esr':
-        cur_var = layers.esr_lyr_group;
-        insert_legend(colorbrewer.YlGnBu, 0, 65, 5);
+        cur_var_zoom1 = layers.esr_lyr_group1;
+        cur_var_zoom2 = layers.esr_lyr_group2;
+        cur_var_zoom3 = layers.esr_lyr_group3;
+        insert_legend(colorbrewer.YlGnBu, 0, 80, 20);
         break;
       case 'emax':
         cur_var_zoom1 = layers.emax_lyr_group1;

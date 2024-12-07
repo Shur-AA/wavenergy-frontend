@@ -932,6 +932,286 @@ var emax_lyr_group3 = new Group({
 });
 
 
+/*Средний поток энергии волны
+        Large scale*/
+
+var esr_lyr_group1 = new Group({
+  combine: true,
+  visible: true,
+  minZoom: 7,
+  name: 'esr',
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 65, 5)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:esr_02_50_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style,
+      source: vector_source(host, 'wavenergy:esr_02_50_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style,
+      source: vector_source(host, 'wavenergy:esr_02_50_iso', epsg)
+    }),
+    new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 65, 5)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:azov_10_esr_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style,
+      source: vector_source(host, 'wavenergy:azov_10_esr_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style,
+      source: vector_source(host, 'wavenergy:azov_10_esr_iso', epsg)
+    }),
+        new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 65, 5)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:esr_02_50_plg_ws', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style,
+      source: vector_source(host, 'wavenergy:esr_02_50_iso_ws', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style,
+      source: vector_source(host, 'wavenergy:esr_02_50_iso_ws', epsg)
+    }),
+     new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 65, 5)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:esr_band', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style,
+      source: vector_source(host, 'wavenergy:esr_cont', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style,
+      source: vector_source(host, 'wavenergy:esr_cont', epsg)
+    })
+  ]
+});
+
+
+/*Средний поток энергии волны
+        Middle scale*/
+
+var esr_lyr_group2 = new Group({
+  combine: true,
+  visible: true,
+  minZoom: 4,
+  maxZoom: 7,
+  name: 'esr',
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 70, 10)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:esr_02_50_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_middle,
+      source: vector_source(host, 'wavenergy:esr_02_50_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_middle,
+      source: vector_source(host, 'wavenergy:esr_02_50_iso', epsg)
+    }),
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 70, 10)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:azov_10_esr_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_middle,
+      source: vector_source(host, 'wavenergy:azov_10_esr_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_middle,
+      source: vector_source(host, 'wavenergy:azov_10_esr_iso', epsg)
+    }),
+        new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 70, 10)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:esr_02_50_plg_ws', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_middle,
+      source: vector_source(host, 'wavenergy:esr_02_50_iso_ws', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_middle,
+      source: vector_source(host, 'wavenergy:esr_02_50_iso_ws', epsg)
+    }),
+      new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 70, 10)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:esr_band', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_middle,
+      source: vector_source(host, 'wavenergy:esr_cont', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_middle,
+      source: vector_source(host, 'wavenergy:esr_cont', epsg)
+    })
+  ]
+});
+
+
+/*Средний поток энергии волны
+        Small scale*/
+
+var esr_lyr_group3 = new Group({
+  combine: true,
+  visible: true,
+  maxZoom: 4,
+  name: 'esr',
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 80, 20)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:esr_02_50_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_small,
+      source: vector_source(host, 'wavenergy:esr_02_50_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_small,
+      source: vector_source(host, 'wavenergy:esr_02_50_iso', epsg)
+    }),
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 80, 20)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:azov_10_esr_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_small,
+      source: vector_source(host, 'wavenergy:azov_10_esr_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_small,
+      source: vector_source(host, 'wavenergy:azov_10_esr_iso', epsg)
+    }),
+        new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 80, 20)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:esr_02_50_plg_ws', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_small,
+      source: vector_source(host, 'wavenergy:esr_02_50_iso_ws', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_small,
+      source: vector_source(host, 'wavenergy:esr_02_50_iso_ws', epsg)
+    }),
+      new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 80, 20)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:esr_band', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_small,
+      source: vector_source(host, 'wavenergy:esr_cont', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_small,
+      source: vector_source(host, 'wavenergy:esr_cont', epsg)
+    })
+  ]
+});
+
+
 var lsr_lyr_group = new Group({
   combine: true,
   visible: true,
@@ -1030,97 +1310,6 @@ var psr_lyr_group = new Group({
     })
   ]
 });
-
-var esr_lyr_group = new Group({
-  combine: true,
-  visible: true,
-  name: 'esr',
-  layers: [
-    new VectorLayer({
-      style: function(feature, resolution) {
-       var z = feature.get('z_mean');
-       return new Style({
-          fill: new Fill({
-            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 65, 5)
-          })
-        })
-      },
-      source: vector_source(host, 'wavenergy:esr_02_50_plg', epsg)
-    }),
-    new VectorLayer({
-      style: styles.cont_style,
-      source: vector_source(host, 'wavenergy:esr_02_50_iso', epsg)
-    }),
-    new VectorLayer({
-      declutter: true,
-      style: styles.cont_label_style,
-      source: vector_source(host, 'wavenergy:esr_02_50_iso', epsg)
-    }),
-    new VectorLayer({
-      style: function(feature, resolution) {
-       var z = feature.get('z_mean');
-       return new Style({
-          fill: new Fill({
-            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 65, 5)
-          })
-        })
-      },
-      source: vector_source(host, 'wavenergy:azov_10_esr_plg', epsg)
-    }),
-    new VectorLayer({
-      style: styles.cont_style,
-      source: vector_source(host, 'wavenergy:azov_10_esr_iso', epsg)
-    }),
-    new VectorLayer({
-      declutter: true,
-      style: styles.cont_label_style,
-      source: vector_source(host, 'wavenergy:azov_10_esr_iso', epsg)
-    }),
-        new VectorLayer({
-      style: function(feature, resolution) {
-       var z = feature.get('z_mean');
-       return new Style({
-          fill: new Fill({
-            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 65, 5)
-          })
-        })
-      },
-      source: vector_source(host, 'wavenergy:esr_02_50_plg_ws', epsg)
-    }),
-    new VectorLayer({
-      style: styles.cont_style,
-      source: vector_source(host, 'wavenergy:esr_02_50_iso_ws', epsg)
-    }),
-    new VectorLayer({
-      declutter: true,
-      style: styles.cont_label_style,
-      source: vector_source(host, 'wavenergy:esr_02_50_iso_ws', epsg)
-    }),
-     new VectorLayer({
-      style: function(feature, resolution) {
-       var z = feature.get('z_mean');
-       return new Style({
-          fill: new Fill({
-            color: fun.get_color(colorbrewer.YlGnBu, z, 0, 65, 5)
-          })
-        })
-      },
-      source: vector_source(host, 'wavenergy:esr_band', epsg)
-    }),
-    new VectorLayer({
-      style: styles.cont_style,
-      source: vector_source(host, 'wavenergy:esr_cont', epsg)
-    }),
-    new VectorLayer({
-      declutter: true,
-      style: styles.cont_label_style,
-      source: vector_source(host, 'wavenergy:esr_cont', epsg)
-    })
-  ]
-});
-
-
-
 
 
 var osr_lyr_group = new Group({
@@ -1437,7 +1626,9 @@ module.exports = {
   hsr_lyr_group3,
   lsr_lyr_group,
   psr_lyr_group,
-  esr_lyr_group,
+  esr_lyr_group1,
+  esr_lyr_group2,
+  esr_lyr_group3,
   emax_lyr_group1,
   emax_lyr_group2,
   emax_lyr_group3,
