@@ -175,14 +175,14 @@ map.on('moveend', function (e) {
       break;
     case 'psr':
       if (map.getView().getZoom() <= 4) {
-        insert_legend(colorbrewer.Greens, z, 0, 8, 2);
+        insert_legend(colorbrewer.BuGn, z, 0, 8, 2);
         break;
       }
       if (map.getView().getZoom() > 7) {
-        insert_legend(colorbrewer.Greens, z, 0, 7, 0.5);
+        insert_legend(colorbrewer.BuGn, z, 0, 7, 0.5);
         break;
       }
-      insert_legend(colorbrewer.Greens, z, 0, 7, 1);
+      insert_legend(colorbrewer.BuGn, z, 0, 7, 1);
       break;
     case 'esr':
       if (map.getView().getZoom() <= 4) {
@@ -207,7 +207,15 @@ map.on('moveend', function (e) {
       insert_legend(colorbrewer.YlOrBr, 0, 4000, 500);
       break;
     case 'osr':
-      insert_legend(colorbrewer.YlGn, 0, 100, 10);
+      if (map.getView().getZoom() <= 4) {
+        insert_legend(colorbrewer.YlGn, 0, 120, 40);
+        break;
+      }
+      if (map.getView().getZoom() > 7) {
+        insert_legend(colorbrewer.YlGn, 0, 100, 10);
+        break;
+      }
+      insert_legend(colorbrewer.YlGn, 0, 100, 20);
       break;
   }
 })
@@ -590,7 +598,7 @@ function ready() {
         cur_var_zoom1 = layers.psr_lyr_group1;
         cur_var_zoom2 = layers.psr_lyr_group2;
         cur_var_zoom3 = layers.psr_lyr_group3;
-        insert_legend(colorbrewer.Greens, z, 0, 8, 2);
+        insert_legend(colorbrewer.BuGn, z, 0, 8, 2);
         break;
       case 'esr':
         cur_var_zoom1 = layers.esr_lyr_group1;
@@ -605,8 +613,10 @@ function ready() {
         insert_legend(colorbrewer.YlOrBr, 0, 4000, 1000);
         break;
       case 'osr':
-        cur_var = layers.osr_lyr_group;
-        insert_legend(colorbrewer.YlGn, 0, 100, 10);
+        cur_var_zoom1 = layers.osr_lyr_group1;
+        cur_var_zoom2 = layers.osr_lyr_group2;
+        cur_var_zoom3 = layers.osr_lyr_group3;
+        insert_legend(colorbrewer.YlGn, 0, 120, 40);
         break;
       case 'wind_grp_50':
         cur_var = layers.wind_grp_50_lyr_group;

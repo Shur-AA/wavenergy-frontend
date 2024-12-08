@@ -1531,31 +1531,16 @@ var psr_lyr_group3 = new Group({
   ]
 });
 
-var osr_lyr_group = new Group({
+
+/*Вероятность определённой энергии волны
+              Large scale*/
+
+var osr_lyr_group1 = new Group({
   combine: true,
   visible: true,
+  minZoom: 7,
   name: 'osr',
   layers: [
-    new VectorLayer({
-      style: function(feature, resolution) {
-       var z = feature.get('Z_MEAN');
-       return new Style({
-          fill: new Fill({
-            color: fun.get_color(colorbrewer.YlGn, z, 0, 100, 10)
-          })
-        })
-      },
-      source: vector_source(host, 'wavenergy:osr_band', epsg)
-    }),
-    new VectorLayer({
-      style: styles.cont_style,
-      source: vector_source(host, 'wavenergy:osr_cont', epsg)
-    }),
-    new VectorLayer({
-      declutter: true,
-      style: styles.cont_label_style,
-      source: vector_source(host, 'wavenergy:osr_cont', epsg)
-    }),
     new VectorLayer({
       style: function(feature, resolution) {
        var z = feature.get('z_mean');
@@ -1598,6 +1583,114 @@ var osr_lyr_group = new Group({
     })
   ]
 });
+
+
+/*Вероятность определённой энергии волны
+              Middle scale*/
+
+var osr_lyr_group2 = new Group({
+  combine: true,
+  visible: true,
+  minZoom: 4,
+  maxZoom: 7,
+  name: 'osr',
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGn, z, 0, 100, 20)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:osr_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_middle,
+      source: vector_source(host, 'wavenergy:osr_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_middle,
+      source: vector_source(host, 'wavenergy:osr_iso', epsg)
+    }),
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGn, z, 0, 100, 20)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:obesp_02_50_plg_ws', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_middle,
+      source: vector_source(host, 'wavenergy:obesp_02_50_iso_ws', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_middle,
+      source: vector_source(host, 'wavenergy:obesp_02_50_iso_ws', epsg)
+    })
+  ]
+});
+
+
+/*Вероятность определённой энергии волны
+              Small scale*/
+
+var osr_lyr_group3 = new Group({
+  combine: true,
+  visible: true,
+  maxZoom: 4,
+  name: 'osr',
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGn, z, 0, 120, 40)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:osr_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_small,
+      source: vector_source(host, 'wavenergy:osr_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_small,
+      source: vector_source(host, 'wavenergy:osr_iso', epsg)
+    }),
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.YlGn, z, 0, 120, 40)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:obesp_02_50_plg_ws', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_small,
+      source: vector_source(host, 'wavenergy:obesp_02_50_iso_ws', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_small,
+      source: vector_source(host, 'wavenergy:obesp_02_50_iso_ws', epsg)
+    })
+  ]
+});
+
 
 var wind_grp_50_lyr_group = new Group({
   combine: true,
@@ -1855,7 +1948,9 @@ module.exports = {
   emax_lyr_group1,
   emax_lyr_group2,
   emax_lyr_group3,
-  osr_lyr_group,
+  osr_lyr_group1,
+  osr_lyr_group2,
+  osr_lyr_group3,
   wind_grp_50_lyr_group,
   wind_grp_100_lyr_group,
   wind_grp_50c_lyr_group,
