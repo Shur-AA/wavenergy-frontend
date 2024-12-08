@@ -1212,9 +1212,13 @@ var esr_lyr_group3 = new Group({
 });
 
 
-var lsr_lyr_group = new Group({
+/*Средняя длина волны
+        Large scale*/
+
+var lsr_lyr_group1 = new Group({
   combine: true,
   visible: true,
+  minZoom: 7,
   name: 'lsr',
   layers: [
     new VectorLayer({
@@ -1258,14 +1262,123 @@ var lsr_lyr_group = new Group({
       source: vector_source(host, 'wavenergy:azov_10_lsr_iso', epsg)
     })
   ]
+}); 
+
+
+/*Средняя длина волны
+      Middle scale*/
+
+var lsr_lyr_group2 = new Group({
+  combine: true,
+  visible: true,
+  minZoom: 4,
+  maxZoom: 7,
+  name: 'lsr',
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.Blues, z, 0, 140, 20)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:lsr_band', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_middle,
+      source: vector_source(host, 'wavenergy:lsr_cont', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_middle,
+      source: vector_source(host, 'wavenergy:lsr_cont', epsg)
+    }),
+      new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.Blues, z, 0, 140, 20)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:azov_10_lsr_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_middle,
+      source: vector_source(host, 'wavenergy:azov_10_lsr_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_middle,
+      source: vector_source(host, 'wavenergy:azov_10_lsr_iso', epsg)
+    })
+  ]
 });
 
 
+/*Средняя длина волны
+    Small scale*/
 
-
-var psr_lyr_group = new Group({
+var lsr_lyr_group3 = new Group({
   combine: true,
   visible: true,
+  maxZoom: 4,
+  name: 'lsr',
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.Blues, z, 0, 160, 40)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:lsr_band', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_small,
+      source: vector_source(host, 'wavenergy:lsr_cont', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_small,
+      source: vector_source(host, 'wavenergy:lsr_cont', epsg)
+    }),
+     new VectorLayer({
+      style: function(feature, resolution) {
+       var z = feature.get('z_mean');
+       return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.Blues, z, 0, 160, 40)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:azov_10_lsr_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_small,
+      source: vector_source(host, 'wavenergy:azov_10_lsr_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_small,
+      source: vector_source(host, 'wavenergy:azov_10_lsr_iso', epsg)
+    })
+  ]
+});
+
+
+/*Средний период волны
+    Large scale*/
+
+var psr_lyr_group1 = new Group({
+  combine: true,
+  visible: true,
+  minZoom: 7,
   name: 'psr',
   layers: [
     new VectorLayer({
@@ -1311,6 +1424,112 @@ var psr_lyr_group = new Group({
   ]
 });
 
+
+/*Средний период волны
+    Middle scale*/
+
+var psr_lyr_group2 = new Group({
+  combine: true,
+  visible: true,
+  minZoom: 4,
+  maxZoom: 7,
+  name: 'psr',
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.Greens, z, 0, 7, 1)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:psr_band', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_middle,
+      source: vector_source(host, 'wavenergy:psr_cont', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_middle,
+      source: vector_source(host, 'wavenergy:psr_cont', epsg)
+    }),
+      new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.Greens, z, 0, 7, 1)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:azov_10_psr_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_middle,
+      source: vector_source(host, 'wavenergy:azov_10_psr_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_middle,
+      source: vector_source(host, 'wavenergy:azov_10_psr_iso', epsg)
+    })
+  ]
+});
+
+
+/*Средний период волны
+    Small scale*/
+
+var psr_lyr_group3 = new Group({
+  combine: true,
+  visible: true,
+  maxZoom: 4,
+  name: 'psr',
+  layers: [
+    new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.Greens, z, 0, 8, 2)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:psr_band', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_small,
+      source: vector_source(host, 'wavenergy:psr_cont', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_small,
+      source: vector_source(host, 'wavenergy:psr_cont', epsg)
+    }),
+      new VectorLayer({
+      style: function(feature, resolution) {
+        var z = feature.get('z_mean');
+        return new Style({
+          fill: new Fill({
+            color: fun.get_color(colorbrewer.Greens, z, 0, 8, 2)
+          })
+        })
+      },
+      source: vector_source(host, 'wavenergy:azov_10_psr_plg', epsg)
+    }),
+    new VectorLayer({
+      style: styles.cont_style_small,
+      source: vector_source(host, 'wavenergy:azov_10_psr_iso', epsg)
+    }),
+    new VectorLayer({
+      declutter: true,
+      style: styles.cont_label_style_small,
+      source: vector_source(host, 'wavenergy:azov_10_psr_iso', epsg)
+    })
+  ]
+});
 
 var osr_lyr_group = new Group({
   combine: true,
@@ -1615,17 +1834,21 @@ module.exports = {
   coast_lyr,
   city_lyr,
   geo_lines,
-  hs_lyr_group3,
-  hs_lyr_group2,
   hs_lyr_group1,
+  hs_lyr_group2,
+  hs_lyr_group3,
   h3p_lyr_group1,
   h3p_lyr_group2,
   h3p_lyr_group3,
   hsr_lyr_group1,
   hsr_lyr_group2,
   hsr_lyr_group3,
-  lsr_lyr_group,
-  psr_lyr_group,
+  lsr_lyr_group1,
+  lsr_lyr_group2,
+  lsr_lyr_group3,
+  psr_lyr_group1,
+  psr_lyr_group2,
+  psr_lyr_group3,
   esr_lyr_group1,
   esr_lyr_group2,
   esr_lyr_group3,

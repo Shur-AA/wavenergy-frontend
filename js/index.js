@@ -163,10 +163,26 @@ map.on('moveend', function (e) {
       insert_legend(colorbrewer.OrRd, 0, 3.2, 0.4);
       break;
     case 'lsr':
-      insert_legend(colorbrewer.Blues, 0, 140, 10);
+      if (map.getView().getZoom() <= 4) {
+        insert_legend(colorbrewer.Blues, 0, 160, 40);
+        break;
+      }
+      if (map.getView().getZoom() > 7) {
+        insert_legend(colorbrewer.Blues, 0, 140, 10);
+        break;
+      }
+      insert_legend(colorbrewer.Blues, 0, 140, 20);
       break;
     case 'psr':
-      insert_legend(colorbrewer.Greens, 0, 6, 0.5);
+      if (map.getView().getZoom() <= 4) {
+        insert_legend(colorbrewer.Greens, z, 0, 8, 2);
+        break;
+      }
+      if (map.getView().getZoom() > 7) {
+        insert_legend(colorbrewer.Greens, z, 0, 7, 0.5);
+        break;
+      }
+      insert_legend(colorbrewer.Greens, z, 0, 7, 1);
       break;
     case 'esr':
       if (map.getView().getZoom() <= 4) {
@@ -565,12 +581,16 @@ function ready() {
         insert_legend(colorbrewer.OrRd, 0, 3.2, 0.8);
         break;
       case 'lsr':
-        cur_var = layers.lsr_lyr_group;
-        insert_legend(colorbrewer.Blues, 0, 140, 10);
+        cur_var_zoom1 = layers.lsr_lyr_group1;
+        cur_var_zoom2 = layers.lsr_lyr_group2;
+        cur_var_zoom3 = layers.lsr_lyr_group3;
+        insert_legend(colorbrewer.Blues, 0, 160, 40);
         break;
       case 'psr':
-        cur_var = layers.psr_lyr_group;
-        insert_legend(colorbrewer.Greens, 0, 6, 0.5);
+        cur_var_zoom1 = layers.psr_lyr_group1;
+        cur_var_zoom2 = layers.psr_lyr_group2;
+        cur_var_zoom3 = layers.psr_lyr_group3;
+        insert_legend(colorbrewer.Greens, z, 0, 8, 2);
         break;
       case 'esr':
         cur_var_zoom1 = layers.esr_lyr_group1;
