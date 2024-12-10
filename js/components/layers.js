@@ -103,7 +103,7 @@ var coast_lyr = new VectorLayer({
 var hs_lyr_group1 = new Group({
   combine: true,
   visible: true,
-  minZoom: 7,
+  minZoom: 6,
   title: 'Значительная высота волны',
   name: 'hs',
   layers: [
@@ -178,7 +178,7 @@ var hs_lyr_group1 = new Group({
 var hs_lyr_group2 = new Group({
   combine: true,
   visible: true,
-  maxZoom: 7,
+  maxZoom: 6,
   minZoom: 4,
   title: 'Значительная высота волны',
   name: 'hs',
@@ -328,7 +328,7 @@ var h3p_lyr_group1 = new Group({
   visible: true,
   title: 'Значительная высота волны',
   name: 'h3p',
-  minZoom: 7,
+  minZoom: 6,
   layers: [
     new VectorLayer({
       style: function(feature, resolution) {
@@ -382,7 +382,7 @@ var h3p_lyr_group2 = new Group({
   visible: true,
   title: 'Значительная высота волны',
   name: 'h3p',
-  maxZoom: 7,
+  maxZoom: 6,
   minZoom: 4,
   layers: [
     new VectorLayer({
@@ -491,7 +491,7 @@ var hsr_lyr_group1 = new Group({
   combine: true,
   visible: true,
   name: 'hsr',
-  minZoom: 7,
+  minZoom: 6,
   layers: [
     new VectorLayer({
       style: function(feature, resolution) {
@@ -585,7 +585,7 @@ var hsr_lyr_group2 = new Group({
   combine: true,
   visible: true,
   name: 'hsr',
-  maxZoom: 7,
+  maxZoom: 6,
   minZoom: 4,
   layers: [
     new VectorLayer({
@@ -776,7 +776,7 @@ var hsr_lyr_group3 = new Group({
 var emax_lyr_group1 = new Group({
   combine: true,
   visible: true,
-  minZoom: 7,
+  minZoom: 6,
   name: 'emax',
   layers: [
     new VectorLayer({
@@ -830,7 +830,7 @@ var emax_lyr_group1 = new Group({
 var emax_lyr_group2 = new Group({
   combine: true,
   visible: true,
-  maxZoom: 7,
+  maxZoom: 6,
   minZoom: 4,
   name: 'emax',
   layers: [
@@ -938,7 +938,7 @@ var emax_lyr_group3 = new Group({
 var esr_lyr_group1 = new Group({
   combine: true,
   visible: true,
-  minZoom: 7,
+  minZoom: 6,
   name: 'esr',
   layers: [
     new VectorLayer({
@@ -1032,7 +1032,7 @@ var esr_lyr_group2 = new Group({
   combine: true,
   visible: true,
   minZoom: 4,
-  maxZoom: 7,
+  maxZoom: 6,
   name: 'esr',
   layers: [
     new VectorLayer({
@@ -1218,7 +1218,7 @@ var esr_lyr_group3 = new Group({
 var lsr_lyr_group1 = new Group({
   combine: true,
   visible: true,
-  minZoom: 7,
+  minZoom: 6,
   name: 'lsr',
   layers: [
     new VectorLayer({
@@ -1272,7 +1272,7 @@ var lsr_lyr_group2 = new Group({
   combine: true,
   visible: true,
   minZoom: 4,
-  maxZoom: 7,
+  maxZoom: 6,
   name: 'lsr',
   layers: [
     new VectorLayer({
@@ -1378,7 +1378,7 @@ var lsr_lyr_group3 = new Group({
 var psr_lyr_group1 = new Group({
   combine: true,
   visible: true,
-  minZoom: 7,
+  minZoom: 6,
   name: 'psr',
   layers: [
     new VectorLayer({
@@ -1432,7 +1432,7 @@ var psr_lyr_group2 = new Group({
   combine: true,
   visible: true,
   minZoom: 4,
-  maxZoom: 7,
+  maxZoom: 6,
   name: 'psr',
   layers: [
     new VectorLayer({
@@ -1538,7 +1538,7 @@ var psr_lyr_group3 = new Group({
 var osr_lyr_group1 = new Group({
   combine: true,
   visible: true,
-  minZoom: 7,
+  minZoom: 6,
   name: 'osr',
   layers: [
     new VectorLayer({
@@ -1592,7 +1592,7 @@ var osr_lyr_group2 = new Group({
   combine: true,
   visible: true,
   minZoom: 4,
-  maxZoom: 7,
+  maxZoom: 6,
   name: 'osr',
   layers: [
     new VectorLayer({
