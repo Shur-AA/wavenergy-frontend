@@ -134,7 +134,7 @@ map.on('moveend', function (e) {
         insert_legend(colorbrewer.RdPu, 0, 20, 4);
         break;
       }
-      if (map.getView().getZoom() > 7) {
+      if (map.getView().getZoom() > 6) {
         insert_legend(colorbrewer.RdPu, 0, 18, 1);
         break;
       }
@@ -145,7 +145,7 @@ map.on('moveend', function (e) {
         insert_legend(colorbrewer.PuRd, 0, 32, 8);
         break;
       }
-      if (map.getView().getZoom() > 7) {
+      if (map.getView().getZoom() > 6) {
         insert_legend(colorbrewer.PuRd, 0, 26, 2);
         break;
       }
@@ -156,7 +156,7 @@ map.on('moveend', function (e) {
         insert_legend(colorbrewer.OrRd, 0, 3.2, 0.8);
         break;
       }
-      if (map.getView().getZoom() > 7) {
+      if (map.getView().getZoom() > 6) {
         insert_legend(colorbrewer.OrRd, 0, 3.2, 0.2);
         break;
       }
@@ -167,7 +167,7 @@ map.on('moveend', function (e) {
         insert_legend(colorbrewer.Blues, 0, 160, 40);
         break;
       }
-      if (map.getView().getZoom() > 7) {
+      if (map.getView().getZoom() > 6) {
         insert_legend(colorbrewer.Blues, 0, 140, 10);
         break;
       }
@@ -178,7 +178,7 @@ map.on('moveend', function (e) {
         insert_legend(colorbrewer.BuGn, z, 0, 8, 2);
         break;
       }
-      if (map.getView().getZoom() > 7) {
+      if (map.getView().getZoom() > 6) {
         insert_legend(colorbrewer.BuGn, z, 0, 7, 0.5);
         break;
       }
@@ -189,7 +189,7 @@ map.on('moveend', function (e) {
         insert_legend(colorbrewer.YlGnBu, 0, 80, 20);
         break;
       }
-      if (map.getView().getZoom() > 7) {
+      if (map.getView().getZoom() > 6) {
         insert_legend(colorbrewer.YlGnBu, 0, 65, 5);
         break;
       }
@@ -200,7 +200,7 @@ map.on('moveend', function (e) {
         insert_legend(colorbrewer.YlOrBr, 0, 4000, 1000);
         break;
       }
-      if (map.getView().getZoom() > 7) {
+      if (map.getView().getZoom() > 6) {
         insert_legend(colorbrewer.YlOrBr, 0, 4000, 250);
         break;
       }
@@ -211,7 +211,7 @@ map.on('moveend', function (e) {
         insert_legend(colorbrewer.YlGn, 0, 120, 40);
         break;
       }
-      if (map.getView().getZoom() > 7) {
+      if (map.getView().getZoom() > 6) {
         insert_legend(colorbrewer.YlGn, 0, 100, 10);
         break;
       }

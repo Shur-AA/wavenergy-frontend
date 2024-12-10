@@ -3,7 +3,8 @@ const { Client } = require('pg');
 const querystring = require('querystring');
 
 const hostname = 'localhost';
-const port = 9696;
+// const port = 9696;
+const port = 1996;
 
 function reformatDatetime(date, time) {
   if (time.length == 1) { time = '0' + time; };
